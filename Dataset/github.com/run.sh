@@ -1,0 +1,14 @@
+./grace --file DataRace/Dataset/github.com/nektos/act/main.go --mod DataRace/Dataset/github.com/nektos/act/ 2&>> grace_output.txt
+./grace --file DataRace/Dataset/github.com/AdguardTeam/AdGuardHome/main.go --mod DataRace/Dataset/github.com/AdguardTeam/AdGuardHome/ 2&>> grace_output.txt
+./grace --file DataRace/Dataset/github.com/alist-org/alist/main.go --mod DataRace/Dataset/github.com/alist-org/alist/ 2&>> grace_output.txt
+./grace --file DataRace/Dataset/github.com/caddyserver/caddy/cmd/caddy/main.go --mod DataRace/Dataset/github.com/caddyserver/caddy/cmd/caddy/ 2&>> grace_output.txt
+./grace --file DataRace/Dataset/github.com/Dreamacro/clash/main.go --mod DataRace/Dataset/github.com/Dreamacro/clash/ 2&>> grace_output.txt
+./grace --file DataRace/Dataset/github.com/cloudreve/Cloudreve/main.go --mod DataRace/Dataset/github.com/cloudreve/Cloudreve/ 2&>> grace_output.txt
+./grace --file DataRace/Dataset/github.com/docker/compose/cmd/main.go --mod DataRace/Dataset/github.com/docker/compose/ 2&>> grace_output.txt
+./grace --file DataRace/Dataset/github.com/schollz/croc/main.go --mod DataRace/Dataset/github.com/schollz/croc/ 2&>> grace_output.txt
+./grace --file DataRace/Dataset/github.com/gogf/gf/cmd/gf/main.go --mod DataRace/Dataset/github.com/gogf/gf/cmd/gf 2&>> grace_output.txt
+./grace --file DataRace/Dataset/code.gitea.io/gitea/main.go --mod DataRace/Dataset/code.gitea.io/gitea/ 2&>> grace_output.txt
+./grace --file DataRace/Dataset/github.com/ginuerzh/gost/cmd/gost/main.go --mod DataRace/Dataset/github.com/ginuerzh/gost/ 2&>> grace_output.txt
+./grace --file DataRace/Dataset/github.com/photoprism/photoprism/cmd/photoprism/main.go --mod DataRace/Dataset/github.com/photoprism/photoprism/ 2&>> grace_output.txt
+./grace --file DataRace/Dataset/github.com/rclone/rclone/rclone.go --mod DataRace/Dataset/github.com/rclone/rclone/ 2&>> grace_output.txt
+./grace --file DataRace/Dataset/github.com/v2fly/v2ray-core/main/main.go --mod DataRace/Dataset/github.com/v2fly/v2ray-core/ 2&>> grace_output.txt
