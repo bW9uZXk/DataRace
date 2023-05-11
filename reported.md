@@ -2,8 +2,6 @@
 
 使用GRace在github的若干项目上进行了数据竞争检测，经过过滤后将部分数据竞争检测结果报告给了开发者，这些在下面列出。
 
-其中AdGuard和croc两个项目的报告经过滤后仍然较长，因此按照原因做了分类，在每一类中选取一个报告。
-
 ### act
 
 项目地址：https://github.com/nektos/act
@@ -159,20 +157,6 @@ gitea/services/migrations/gitea_uploader.go:869:12
 gitea/services/migrations/migrate.go:445:38 ->
 gitea/services/migrations/gitea_uploader.go:883:5 ->
 gitea/services/migrations/gitea_uploader.go:880:135 
-===================================================
-Potential race condition:
- Access1:
-        comment.TreePath = util.CleanPath(comment.TreePath)
-                ^
-gitea/services/migrations/migrate.go:452:37 ->
-gitea/services/migrations/gitea_uploader.go:869:12
- 
- Access2:
-        if err := git.GetRepoRawDiffForFile(g.gitRepo, pr.MergeBase, headCommitID, git.RawDiffNormal, comment.TreePath, writer); err != nil {
-                                                                                                              ^
-gitea/services/migrations/migrate.go:445:38 ->
-gitea/services/migrations/gitea_uploader.go:883:5 ->
-gitea/services/migrations/gitea_uploader.go:878:107 
 ```
 
 性质：已确认，已修复
@@ -191,19 +175,6 @@ gitea/modules/markup/renderer.go:236:4
         ^
 gitea/modules/markup/renderer.go:254:3 ->
 gitea/modules/markup/renderer.go:247:4
-===================================================
-Potential race condition:
- Access1:
-        err = SanitizeReader(pr2, renderer.Name(), output)
-        ^
-gitea/modules/markup/renderer.go:239:4 ->
-gitea/modules/markup/renderer.go:236:4
-
- Access2:
-        _, err = io.Copy(pw2, pr)
-           ^
-gitea/modules/markup/renderer.go:254:3 ->
-gitea/modules/markup/renderer.go:249:7
 ```
 
 性质：已确认，未修复
@@ -233,45 +204,6 @@ Potential race condition:
  Access1:
         clientAddr = addr
         ^
-gost/socks.go:1357:3 ->
-gost/socks.go:1341:5
-
- Access2:
-        if _, err := uc.WriteToUDP(buf.Bytes(), clientAddr); err != nil {
-                                                ^
-gost/socks.go:1389:3 ->
-gost/socks.go:1381:44
-===================================================
-Potential race condition:
- Access1:
-        clientAddr = laddr
-        ^
-gost/socks.go:1276:3 ->
-gost/socks.go:1252:5
-
- Access2:
-        if clientAddr == nil {
-           ^
-gost/socks.go:1306:3 ->
-gost/socks.go:1288:7
-===================================================
-Potential race condition:
- Access1:
-        clientAddr = laddr
-        ^
-gost/socks.go:1276:3 ->
-gost/socks.go:1252:5
-
- Access2:
-        if _, err := relay.WriteTo(buf.Bytes(), clientAddr); err != nil {
-                                                ^
-gost/socks.go:1306:3 ->
-gost/socks.go:1298:44
-===================================================
-Potential race condition:
- Access1:
-        clientAddr = addr
-        ^
 gost/ss.go:375:3 ->
 gost/ss.go:368:5 ->
 gost/ss.go:351:6
@@ -281,37 +213,7 @@ gost/ss.go:351:6
            ^
 gost/ss.go:409:3 ->
 gost/ss.go:402:5 ->
-gost/ss.go:387:8 
-===================================================
-Potential race condition:
- Access1:
-        clientAddr = addr
-        ^
-gost/ss.go:375:3 ->
-gost/ss.go:368:5 ->
-gost/ss.go:351:6
- 
- Access2:
-        log.Logf("[ssu] %s <<< %s length: %d", clientAddr, addr, n)
-                                               ^
-gost/ss.go:409:3 ->
-gost/ss.go:402:5 ->
-gost/ss.go:392:45 
-===================================================
-Potential race condition:
- Access1:
-        clientAddr = addr
-        ^
-gost/ss.go:375:3 ->
-gost/ss.go:368:5 ->
-gost/ss.go:351:6
- 
- Access2:
-        _, err = conn.WriteTo(buf.Bytes()[3:], clientAddr)
-                                               ^
-gost/ss.go:409:3 ->
-gost/ss.go:402:5 ->
-gost/ss.go:400:44 
+gost/ss.go:387:8
 ```
 
 性质：未回复
